@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PBINTVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EmployeeTbl">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Employee_Name" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Date_Of_Birth" />
+      <PropertyRef Name="Salary" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Employee_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date_Of_Birth" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Salary" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityContainer Name="PBINTVEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EmployeeTbls" EntityType="Self.EmployeeTbl" />
+  </EntityContainer>
+</Schema>

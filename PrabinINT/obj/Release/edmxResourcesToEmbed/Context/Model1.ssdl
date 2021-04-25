@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PBINTVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PBINTV.dbo.EmployeeTbl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EmployeeTbl">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Employee Name" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Date Of Birth" />
+      <PropertyRef Name="Salary" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Employee Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date Of Birth" Type="datetime" Nullable="false" />
+    <Property Name="Salary" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="PBINTVModelStoreContainer">
+    <EntitySet Name="EmployeeTbl" EntityType="Self.EmployeeTbl" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[EmployeeTbl].[Id] AS [Id], 
+[EmployeeTbl].[Employee Name] AS [Employee Name], 
+[EmployeeTbl].[Address] AS [Address], 
+[EmployeeTbl].[Date Of Birth] AS [Date Of Birth], 
+[EmployeeTbl].[Salary] AS [Salary]
+FROM [dbo].[EmployeeTbl] AS [EmployeeTbl]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

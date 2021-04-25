@@ -1,0 +1,101 @@
+﻿@model PrabinINT.Models.EmployeeModel
+
+@{
+    ViewBag.Title = "EmployeeList";
+   
+}
+
+@*<table class="table table-hover">
+        <tr>
+            <th>EmployeeName</th>
+            <th>Address</th>
+            <th>Date Of Birth</th>
+            <th>Salary</th>
+        </tr>
+
+        @foreach (var item in Model.EmployeeModellist)
+
+        {
+            <tr>
+                <td>item.EmployeeName</td>
+                <td>item.Address</td>
+                <td>item.Date Of Birth</td>
+                <td>item.Salary</td>
+                <td>
+                    <a href="@Url.Action("Employee",new { item.Id,item.Employee_Name, item.Address, item.Date_Of_Birth,item.Salary})" class="btn btn-success ">Edit </a>
+                    <a href="@Url.Action("Delete",new { item.Id})" class="btn btn-danger "> </a>
+
+                </td>
+            </tr>
+
+        }
+    </table>*@
+
+
+<link href="~/Scripts/DataTable/datatables.min.css" rel="stylesheet" />
+<script src="~/Scripts/DataTable/datatables.min.js"></script>
+<br />
+
+<br />
+<div class="well well-small">
+    @if (Model.EmployeeModellist.Count > 0)
+    {
+        int Sno = ViewBag.currentPage == 1 ? 0 : (ViewBag.currentPage - 1) * 20;
+        <table id="ItemCategory" class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th class="span1"><label>S.N</label> </th>
+                    <th>EmployeeName</th>
+                    <th>Address</th>
+                    <th>Date Of Birth</th>
+                    <th>Salary</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.EmployeeModellist)
+                {
+
+                <tr class="@(Sno++ % 2 == 0 ? "success" : "warning")">
+                    <td class="span1l">
+                        @Sno.ToString()
+                    </td>
+                    <td>@item.Employee_Name</td>
+                    <td>@item.Address</td>
+                    <td>@item.Date_Of_Birth</td>
+                    <td>@item.Salary</td>
+                    <td>
+                        <a href="@Url.Action("Employee",new { item.Id,item.Employee_Name, item.Address, item.Date_Of_Birth,item.Salary})" class="btn btn-success ">Edit </a>
+                        <a href="@Url.Action("Delete",new { item.Id})" class="btn btn-danger "> </a>
+
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h4>Invalid</h4>
+    }
+
+</div>
+<script>
+    var table = $('#ItemCategory').DataTable({
+        "order": false,
+        "pageLength": 25,
+        "language": {
+            "lengthMenu": "Display _MENU_ records per page",
+            "zeroRecords": "No records available!",
+            "info": " Page _PAGE_ of _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "paginate":
+            {
+                "previous": "Previous",
+                "next": "Next"
+            }
+        }
+    });
+</script>
